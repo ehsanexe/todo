@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
 import Header from './Header'
 import TodoItems from './TodoItems'
 import AddTodo from './AddTodo'
@@ -20,7 +20,12 @@ export default function App() {
   }
 
   const submitHandler = (addTodo) =>{
-    setTodos( prevTodos => ([...prevTodos,{text:addTodo, key: Math.random().toString()}]))
+    if (addTodo.length > 0){
+      setTodos( prevTodos => ([...prevTodos,{text:addTodo, key: Math.random().toString()}]))
+    }
+    else{
+      Alert.alert( 'Error' , 'Enter Add todo' , [{text: 'Understood'}])
+    }
   }
 
   return (
@@ -47,9 +52,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   content: {
+    flex: 1,
     padding: 40,
   },
   list: {
+    flex: 1,
     marginTop: 20,
   },
 });

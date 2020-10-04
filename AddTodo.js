@@ -12,7 +12,7 @@ export default function AddTodo({submitHandler}) {
     return (
         <View>
             <TextInput style={styles.input} onChangeText={changeHandler}/>
-            <Button color='aquamarine' onPress={() => submitHandler(addTodo)} title='add todo' />
+            <Button color='mediumturquoise' onPress={() => submitHandler(addTodo)} title='add todo' />
         </View>
     )
 }
@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
       paddingHorizontal: 8,
       paddingVertical: 6,
       borderBottomWidth: 1,
-      borderBottomColor: '#ddd',
+      borderBottomColor: 'cadetblue',
     },
   });
