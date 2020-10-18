@@ -1,13 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons';
+import {useFonts,DancingScript_400Regular,} from '@expo-google-fonts/dancing-script'
+import { AppLoading } from 'expo';
 
 export default function TodoItems({item,pressHandler}){
+
+
+    let [fontsLoaded] = useFonts({
+      DancingScript_400Regular,
+    });
+
+    if (!fontsLoaded) {
+      return <AppLoading />;
+    }
 
     return (
         <TouchableOpacity onPress={() => pressHandler(item.key)}>
           <View style={styles.item}>
-            <MaterialCommunityIcons name="delete-circle-outline" size={18} color="cadetblue" />
+            <MaterialIcons style={styles.icon} name="check-box-outline-blank" size={18} color="white" />
             <Text style={styles.text}>{item.text}</Text>
           </View>
         
@@ -19,16 +30,21 @@ export default function TodoItems({item,pressHandler}){
 const styles = StyleSheet.create({
     item: {
       flexDirection: 'row',
-      padding: 16,
+      padding: 6,
       marginTop: 16,
       borderColor: '#bbb',
-      borderWidth: 1,
-      borderRadius: 1,
-      borderRadius: 10,
-      borderColor: 'cadetblue'      
+      borderBottomWidth: 1,
+      borderColor: 'white'      
     },
 
     text: {
       marginLeft: 10,
+      color: 'white',
+      fontFamily: 'DancingScript_400Regular',
+      fontSize: 18
+    },
+
+    icon:{
+      marginTop: 6
     }
   });

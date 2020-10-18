@@ -1,18 +1,22 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, Button } from 'react-native';
+import FlatButton from './flatButton'
+
 
 export default function AddTodo({submitHandler}) {
 
-    const [addTodo,setTodo] = useState()
+    const [addTodo,setTodo] = useState('')
 
     const changeHandler = (text) => {
         setTodo(text)
     }
 
+
     return (
         <View>
             <TextInput style={styles.input} onChangeText={changeHandler}/>
-            <Button color='mediumturquoise' onPress={() => submitHandler(addTodo)} title='add todo' />
+            {/* <Button color='white' onPress={() => submitHandler(addTodo)} title='add todo' /> */}
+            <FlatButton onPress={() => submitHandler(addTodo)} title='add todo'/>
         </View>
     )
 }
@@ -23,6 +27,7 @@ const styles = StyleSheet.create({
       paddingHorizontal: 8,
       paddingVertical: 6,
       borderBottomWidth: 1,
-      borderBottomColor: 'cadetblue',
+      borderBottomColor: 'white',
+      color: 'white',
     },
   });
